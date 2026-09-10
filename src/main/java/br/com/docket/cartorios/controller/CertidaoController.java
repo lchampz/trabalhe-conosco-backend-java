@@ -63,7 +63,7 @@ public class CertidaoController {
     @Operation(summary = "Deleção de uma certidão")
     public ResponseEntity<CertidaoResponse> delete(@PathVariable Long id) {
         certidaoService.delete(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
 }

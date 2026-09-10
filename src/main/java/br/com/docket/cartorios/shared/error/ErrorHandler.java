@@ -21,7 +21,6 @@ public class ErrorHandler {
     private ProblemDetail problem(HttpStatus status, String title, String detail) {
         ProblemDetail p = ProblemDetail.forStatusAndDetail(status, detail);
         p.setTitle(title);
-        p.setProperty("codigo", status);
         return p;
     }
 

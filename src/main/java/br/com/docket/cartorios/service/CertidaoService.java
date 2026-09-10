@@ -21,6 +21,7 @@ public class CertidaoService {
     private final CertidaoRepository certidaoRepository;
     private final CertidaoMapper certidaoMapper;
 
+    @Transactional(readOnly = true)
     public Page<CertidaoResponse> list(String nome, Pageable pageable) {
         Page<Certidao> page = StringUtils.hasText(nome)
                 ? certidaoRepository.findByNomeContainingIgnoreCase(nome, pageable)
@@ -28,6 +29,7 @@ public class CertidaoService {
         return page.map(certidaoMapper::fromCertidao);
     }
 
+    @Transactional(readOnly = true)
     public CertidaoResponse findById(Long id) {
         return certidaoMapper.fromCertidao(certidaoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Certidão", id)));

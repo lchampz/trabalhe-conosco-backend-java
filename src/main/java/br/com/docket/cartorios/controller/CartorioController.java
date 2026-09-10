@@ -73,7 +73,7 @@ public class CartorioController {
     }
 
     @PutMapping("/{cartorioId}/certidoes/{certidaoId}")
-    public ResponseEntity<Void> linkrCertidao(
+    public ResponseEntity<Void> linkarCertidao(
             @PathVariable Long cartorioId,
             @PathVariable Long certidaoId) {
         cartorioService.linkCertidao(cartorioId, certidaoId);
