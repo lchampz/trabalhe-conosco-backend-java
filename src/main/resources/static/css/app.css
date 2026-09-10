@@ -1,0 +1,324 @@
+:root {
+    --purple: #514689;
+    --purple-dark: #3F3468;
+    --black-100: #2E2D2C;
+    --black-80: #585756;
+    --black-60: #828180;
+    --black-20: #D5D5D5;
+    --black-10: #EAEAE9;
+    --cold-grey: #EBF0F5;
+    --white: #FFFFFF;
+    --green-dark: #008768;
+    --green-light: #DBFAF3;
+    --red: #E65562;
+    --red-light: #FBE7E9;
+    --blue: #3570B2;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--cold-grey);
+    color: var(--black-100);
+}
+
+a {
+    color: var(--blue);
+}
+
+header.topbar {
+    background: var(--purple);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+header.topbar .brand {
+    color: var(--white);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+}
+
+header.topbar nav {
+    display: flex;
+    gap: 4px;
+}
+
+header.topbar nav a {
+    color: #E3E0F2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+header.topbar nav a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+}
+
+header.topbar nav a.ativo {
+    background: rgba(255, 255, 255, 0.18);
+    color: var(--white);
+}
+
+main {
+    max-width: 960px;
+    margin: 32px auto;
+    padding: 0 24px 48px;
+}
+
+h1 {
+    font-size: 28px;
+    margin: 0 0 24px;
+}
+
+.mensagem, .erro {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.mensagem {
+    background: var(--green-light);
+    color: var(--green-dark);
+}
+
+.erro {
+    background: var(--red-light);
+    color: var(--red);
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filtro {
+    display: flex;
+    gap: 8px;
+}
+
+input[type=text] {
+    padding: 9px 12px;
+    border: 1px solid var(--black-20);
+    border-radius: 6px;
+    font-size: 14px;
+    background: var(--white);
+    font-family: inherit;
+}
+
+input[type=text]:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+
+.btn {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: var(--purple);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--purple-dark);
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--black-100);
+    border: 1px solid var(--black-20);
+}
+
+.btn-secondary:hover {
+    background: var(--cold-grey);
+}
+
+.btn-danger {
+    background: var(--white);
+    color: var(--red);
+    border: 1px solid var(--red);
+}
+
+.btn-danger:hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+.card {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--black-10);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 14px;
+}
+
+thead th {
+    background: var(--cold-grey);
+    color: var(--black-80);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--black-10);
+}
+
+tbody tr:not(:last-child) td {
+    border-bottom: 1px solid var(--black-10);
+}
+
+tbody tr:hover {
+    background: #FAFBFD;
+}
+
+td.vazio {
+    text-align: center;
+    color: var(--black-60);
+    padding: 32px;
+}
+
+.acoes {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.acoes form {
+    margin: 0;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--cold-grey);
+    color: var(--purple);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.paginacao {
+    margin-top: 20px;
+    display: flex;
+    gap: 6px;
+}
+
+.paginacao a {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--black-10);
+    color: var(--black-100);
+    text-decoration: none;
+    font-size: 14px;
+    background: var(--white);
+}
+
+.paginacao a.ativo {
+    background: var(--purple);
+    color: var(--white);
+    border-color: var(--purple);
+}
+
+form.formulario {
+    background: var(--white);
+    border: 1px solid var(--black-10);
+    border-radius: 10px;
+    padding: 32px;
+    max-width: 640px;
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black-80);
+    margin-bottom: 6px;
+}
+
+.campo input[type=text] {
+    width: 100%;
+}
+
+.erro-campo {
+    color: var(--red);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+fieldset.certidoes {
+    border: 1px solid var(--black-10);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 0;
+}
+
+fieldset.certidoes legend {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black-80);
+    padding: 0 6px;
+}
+
+.opcoes-certidao {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 8px 16px;
+}
+
+.opcoes-certidao label {
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--black-100);
+}
+
+.acoes-form {
+    margin-top: 24px;
+    display: flex;
+    gap: 10px;
+}

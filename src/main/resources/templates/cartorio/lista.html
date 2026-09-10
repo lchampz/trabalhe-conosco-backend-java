@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cartórios</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="~{fragments/nav :: topbar('cartorios')}"></header>
+
+<main>
+    <h1>Cartórios</h1>
+
+    <p class="mensagem" th:if="${mensagem}" th:text="${mensagem}"></p>
+    <p class="erro" th:if="${erro}" th:text="${erro}"></p>
+
+    <div class="toolbar">
+        <form class="filtro" th:action="@{/cartorios}" method="get">
+            <input type="text" name="nome" placeholder="Buscar por nome" th:value="${nome}">
+            <button class="btn btn-secondary" type="submit">Buscar</button>
+        </form>
+        <a class="btn btn-primary" th:href="@{/cartorios/novo}">Novo cartório</a>
+    </div>
+
+    <div class="card">
+        <table>
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Certidões</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cartorio : ${cartorios.content}">
+                <td th:text="${cartorio.nome}"></td>
+                <td th:text="${cartorio.rua} + ', ' + ${cartorio.numero} + ' - ' + ${cartorio.cidade} + '/' + ${cartorio.uf}"></td>
+                <td><span class="badge" th:text="${cartorio.totalCertidoes}"></span></td>
+                <td class="acoes">
+                    <a class="btn btn-secondary" th:href="@{/cartorios/{id}/editar(id=${cartorio.id})}">Editar</a>
+                    <form th:action="@{/cartorios/{id}/excluir(id=${cartorio.id})}" method="post"
+                          onsubmit="return confirm('Excluir este cartório?');">
+                        <button class="btn btn-danger" type="submit">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${cartorios.totalElements == 0}">
+                <td class="vazio" colspan="4">Nenhum cartório cadastrado.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="paginacao" th:if="${cartorios.totalPages > 1}">
+        <a th:each="p : ${#numbers.sequence(0, cartorios.totalPages - 1)}"
+           th:href="@{/cartorios(page=${p}, nome=${nome})}"
+           th:classappend="${p == cartorios.page} ? 'ativo'"
+           th:text="${p + 1}"></a>
+    </div>
+</main>
+
+</body>
+</html>

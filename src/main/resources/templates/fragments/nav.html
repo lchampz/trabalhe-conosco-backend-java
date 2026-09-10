@@ -1,0 +1,7 @@
+<header class="topbar" th:fragment="topbar(ativo)" xmlns:th="http://www.thymeleaf.org">
+    <span class="brand">Docket</span>
+    <nav>
+        <a th:href="@{/cartorios}" th:classappend="${ativo == 'cartorios'} ? 'ativo'">Cartórios</a>
+        <a th:href="@{/certidoes}" th:classappend="${ativo == 'certidoes'} ? 'ativo'">Certidões</a>
+    </nav>
+</header>

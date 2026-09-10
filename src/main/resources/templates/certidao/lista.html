@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Certidões</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:replace="~{fragments/nav :: topbar('certidoes')}"></header>
+
+<main>
+    <h1>Certidões</h1>
+
+    <p class="mensagem" th:if="${mensagem}" th:text="${mensagem}"></p>
+    <p class="erro" th:if="${erro}" th:text="${erro}"></p>
+
+    <div class="toolbar">
+        <form class="filtro" th:action="@{/certidoes}" method="get">
+            <input type="text" name="nome" placeholder="Buscar por nome" th:value="${nome}">
+            <button class="btn btn-secondary" type="submit">Buscar</button>
+        </form>
+        <a class="btn btn-primary" th:href="@{/certidoes/novo}">Nova certidão</a>
+    </div>
+
+    <div class="card">
+        <table>
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="certidao : ${certidoes.content}">
+                <td th:text="${certidao.nome}"></td>
+                <td class="acoes">
+                    <a class="btn btn-secondary" th:href="@{/certidoes/{id}/editar(id=${certidao.id})}">Editar</a>
+                    <form th:action="@{/certidoes/{id}/excluir(id=${certidao.id})}" method="post"
+                          onsubmit="return confirm('Excluir esta certidão?');">
+                        <button class="btn btn-danger" type="submit">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${certidoes.totalElements == 0}">
+                <td class="vazio" colspan="2">Nenhuma certidão cadastrada.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="paginacao" th:if="${certidoes.totalPages > 1}">
+        <a th:each="p : ${#numbers.sequence(0, certidoes.totalPages - 1)}"
+           th:href="@{/certidoes(page=${p}, nome=${nome})}"
+           th:classappend="${p == certidoes.page} ? 'ativo'"
+           th:text="${p + 1}"></a>
+    </div>
+</main>
+
+</body>
+</html>
